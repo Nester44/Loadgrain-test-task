@@ -43,5 +43,3 @@ function loadGrain(levels) {
   }
   return result;
 }
-
-console.log(loadGrain([32, 13, 16, 46, 11, 21, 21, 29, 41, 35, 34, 30, 17, 16, 21, 22, 46, 21, 0]))
