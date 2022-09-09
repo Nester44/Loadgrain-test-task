@@ -37,7 +37,6 @@ function loadGrain(levels) {
       if(levels[rightBorder] === 0) continue;
       if (levels[rightBorder] < levels[leftBorder]) {
         result += (rightBorder - leftBorder - 1) * levels[rightBorder] - edge;
-      
       }
     }
   }
