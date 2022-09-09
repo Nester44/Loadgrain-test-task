@@ -18,9 +18,16 @@ function loadGrain(levels) {
     if (level >= levels[leftBorder]) {
       rightBorder = leftBorder;
       leftBorder = i;
-      const highestBorder = leftBorder > rightBorder ? leftBorder : rightBorder;
-      const lowestBorder = leftBorder < rightBorder ? leftBorder : rightBorder;
+      let highestBorder,lowestBorder;
       
+      if(leftBorder > rightBorder) {
+        highestBorder = leftBorder;
+        lowestBorder = rightBorder;
+      } else {
+        highestBorder = rightBorder;
+        lowestBorder = leftBorder
+      }
+
       result += (highestBorder - lowestBorder - 1) * levels[lowestBorder] - edge;
       edge = 0;
     }
