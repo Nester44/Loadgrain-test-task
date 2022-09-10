@@ -1,48 +1,44 @@
 'use strict';
+const loadGrain = (levels) => {
+    const length = levels.length;
+    if (length < 3) return 0;
 
-function loadGrain(levels) {
-  if (levels.length < 3) return 0;
+    const right = [];
+    for (let i = 0; i < length; i++) right.push(i);
+    right[0] = levels[0];
 
-  let result = 0;
-  let leftBorder = 0;
-  let rightBorder = 0;
-  let edge = 0;
+    for(let i = 0; i < length - 1; i++) {
+        if (levels[i] > right[i]) {
+            right[i] = levels[i];
 
-  for (let i = 1; i < levels.length; i++) {
-    const level = levels[i]
+        }
 
-    if (level < levels[leftBorder] && i !== levels.length - 1) {
-      edge += level
+        right[i+1] = right[i];
+
     }
 
-    if (level >= levels[leftBorder]) {
-      rightBorder = leftBorder;
-      leftBorder = i;
-      let highestBorder,lowestBorder;
-      
-      if(leftBorder > rightBorder) {
-        highestBorder = leftBorder;
-        lowestBorder = rightBorder;
-      } else {
-        highestBorder = rightBorder;
-        lowestBorder = leftBorder
-      }
+    const left = [];
+    for (let i = 0; i < length; i++) left.push(i);
+    left[length - 1] = levels[length - 1];
 
-      result += (highestBorder - lowestBorder - 1) * levels[lowestBorder] - edge;
-      edge = 0;
+    for(let i = length - 1; i > 0; i--) {
+        if(levels[i] > left[i]) {
+            left[i] = levels[i];
+
+        }
+        left[i - 1] = left[i]
+
     }
 
-    if (i === levels.length - 1) {
-      rightBorder = i
-      if(levels[rightBorder] === 0) continue;
-      if (levels[rightBorder] < levels[leftBorder]) {
-        console.log('1213')
-        result += (rightBorder - leftBorder - 1) * levels[rightBorder] - edge;
-      
-      }
+    let volume = 0;
+    for(let i = 0; i < length; i++) {
+        let volumeToAdd = Math.min(right[i], left[i]) - levels[i]
+        
+        if (volumeToAdd > 0) volume += volumeToAdd
     }
-  }
-  return result;
+    return volume
 }
 
-console.log(loadGrain([32, 13, 16, 46, 11, 21, 21, 29, 41, 35, 34, 30, 17, 16, 21, 22, 46, 21, 0]))
+export default loadGrain
+
+console.log(loadGrain([4, 0, 1, 3]))

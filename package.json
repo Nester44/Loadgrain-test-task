@@ -1,0 +1,20 @@
+{
+  "name": "test-task",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000L\u0000o\u0000a\u0000d\u0000g\u0000r\u0000a\u0000i\u0000n\u0000-\u0000t\u0000e\u0000s\u0000t\u0000-\u0000t\u0000a\u0000s\u0000k\u0000\r\u0000 \u0000",
+  "main": "loadGrain.js",
+  "type": "module",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nester44/Loadgrain-test-task.git"
+  },
+  "author": "Nikita Nesterov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nester44/Loadgrain-test-task/issues"
+  },
+  "homepage": "https://github.com/Nester44/Loadgrain-test-task#readme"
+}
